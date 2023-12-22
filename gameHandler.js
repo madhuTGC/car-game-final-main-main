@@ -1018,10 +1018,11 @@ document.addEventListener("touchstart", function (e) {
 
 document.addEventListener("touchmove", function (e) {
     e.preventDefault();
-    if (touchStartX !== undefined && raceCarStartX !== undefined && e.touches[0].clientX<raceCarStartX)  {
+    if (touchStartX !== undefined && raceCarStartX !== undefined &&road.width<e.touches[0].clientX )  {
         const touchX = e.touches[0].clientX;
         const deltaX = touchX - touchStartX;
         player.x = raceCarStartX + deltaX;
+        console.log({touchStartX,deltaX,touchX,raceCarStartX})
 
         const road = gameArea.getBoundingClientRect();
         player.x = Math.min(Math.max(player.x, 0), road.width - carElement.offsetWidth);
