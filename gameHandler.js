@@ -1038,6 +1038,55 @@ document.addEventListener('keyup', (e)=>{
 
 
 
+// document.addEventListener("touchmove", function (e) {
+//   e.preventDefault();
+//   if (touchStartX !== undefined && raceCarStartX !== undefined) {
+//       const touchX = e.touches[0].clientX;
+//       const deltaX = touchX - touchStartX;
+      
+//       const road = gameArea.getBoundingClientRect();
+      
+//       // Calculate the new X position
+//       let newX = raceCarStartX + deltaX;
+
+//       // Ensure the new X position stays within the road boundaries
+//       newX = Math.min(Math.max(newX, 0), road.width - carElement.offsetWidth);
+
+//       // Additional conditions for left and right boundaries
+//       if (newX < 0) {
+//           newX = 0;
+//       } else if (newX > road.width - carElement.offsetWidth) {
+//           newX = road.width - carElement.offsetWidth;
+//       }
+
+//       player.x = newX;
+//   }
+// });
+
+// document.addEventListener('keydown', (e) => {
+//   e.preventDefault();
+//   keys[e.key] = true;
+
+//   if (keys.ArrowLeft && player.x > 0) {
+//       player.x -= player.speed;
+//   }
+
+//   if (keys.ArrowRight && player.x < (road.width - 90)) {
+//       player.x += player.speed;
+//   }
+// });
+
+// document.addEventListener('keyup', (e) => {
+//   e.preventDefault();
+//   keys[e.key] = false;
+// });
+
+
+
+
+let touchStartX;
+let raceCarStartX;
+
 document.addEventListener("touchmove", function (e) {
   e.preventDefault();
   if (touchStartX !== undefined && raceCarStartX !== undefined) {
@@ -1052,14 +1101,15 @@ document.addEventListener("touchmove", function (e) {
       // Ensure the new X position stays within the road boundaries
       newX = Math.min(Math.max(newX, 0), road.width - carElement.offsetWidth);
 
-      // Additional conditions for left and right boundaries
-      if (newX < 0) {
-          newX = 0;
-      } else if (newX > road.width - carElement.offsetWidth) {
-          newX = road.width - carElement.offsetWidth;
-      }
-
+      // Set the player's x position
       player.x = newX;
+
+      // Additional conditions for left and right boundaries
+      if (player.x < 0) {
+          player.x = 0;
+      } else if (player.x > road.width - carElement.offsetWidth) {
+          player.x = road.width - carElement.offsetWidth;
+      }
   }
 });
 
@@ -1080,9 +1130,5 @@ document.addEventListener('keyup', (e) => {
   e.preventDefault();
   keys[e.key] = false;
 });
-
-
-
-
 
 
