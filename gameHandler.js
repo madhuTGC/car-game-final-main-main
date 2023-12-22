@@ -984,7 +984,7 @@ function gamePlay() {
         // if(keys.ArrowLeft && player.x > 0) player.x -= player.speed;
         if(keys.ArrowLeft && player.x > 0) player.x -= player.speed;
 
-        if(keys.ArrowRight && player.x < (road.width - 70)) player.x += player.speed;
+        if(keys.ArrowRight && player.x < (road.width - 90)) player.x += player.speed;
 
         carElement.style.top = player.y + "px";
         carElement.style.left = player.x + "px";
@@ -1037,32 +1037,52 @@ document.addEventListener('keyup', (e)=>{
 
 
 
-let touchStartX;
-let raceCarStartX;
-
-document.addEventListener("touchstart", function (e) {
-    e.preventDefault();
-    touchStartX = e.touches[0].clientX;
-    raceCarStartX = player.x;
-});
 
 document.addEventListener("touchmove", function (e) {
-    e.preventDefault();
-    if (touchStartX !== undefined && raceCarStartX !== undefined) {
-        const touchX = e.touches[0].clientX;
-        const deltaX = touchX - touchStartX;
+  e.preventDefault();
+  if (touchStartX !== undefined && raceCarStartX !== undefined) {
+      const touchX = e.touches[0].clientX;
+      const deltaX = touchX - touchStartX;
+      
+      const road = gameArea.getBoundingClientRect();
+      
+      // Calculate the new X position
+      let newX = raceCarStartX + deltaX;
 
-        const road = gameArea.getBoundingClientRect();
-        let newX = raceCarStartX + deltaX;
+      // Ensure the new X position stays within the road boundaries
+      newX = Math.min(Math.max(newX, 0), road.width - carElement.offsetWidth);
 
-        // Ensure the new X position stays within the boundaries
-        newX = Math.min(Math.max(newX, 0), road.width - carElement.offsetWidth);
+      // Additional conditions for left and right boundaries
+      if (newX < 0) {
+          newX = 0;
+      } else if (newX > road.width - carElement.offsetWidth) {
+          newX = road.width - carElement.offsetWidth;
+      }
 
-        player.x = newX;
-    }
+      player.x = newX;
+  }
 });
 
-document.addEventListener("touchend", function (e) {
-    touchStartX = undefined;
-    raceCarStartX = undefined;
+document.addEventListener('keydown', (e) => {
+  e.preventDefault();
+  keys[e.key] = true;
+
+  if (keys.ArrowLeft && player.x > 0) {
+      player.x -= player.speed;
+  }
+
+  if (keys.ArrowRight && player.x < (road.width - 90)) {
+      player.x += player.speed;
+  }
 });
+
+document.addEventListener('keyup', (e) => {
+  e.preventDefault();
+  keys[e.key] = false;
+});
+
+
+
+
+
+
