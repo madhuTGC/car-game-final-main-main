@@ -842,21 +842,21 @@ function displayQuestionInModal(questionObj) {
 
 
 
-    // let timer = 30; // Set the timer duration in seconds
-    // const timerElement = $('#timer');
-    // timerElement.text(`${timer} sec`);
+    let timer = 30; // Set the timer duration in seconds
+    const timerElement = $('#timer');
+    timerElement.text(`${timer} sec`);
 
-    // const timerInterval = setInterval(() => {
-    //     timer--;
+    const timerInterval = setInterval(() => {
+        timer--;
 
-    //     if (timer >= 0) {
-    //         timerElement.text(`${timer} Sec`);
-    //     } else {
-    //         clearInterval(timerInterval);
-    //         // Time's up, handle it as needed
-    //         onTimeUp();
-    //     }
-    // }, 1000);
+        if (timer >= 0) {
+            timerElement.text(`${timer} Sec`);
+        } else {
+            clearInterval(timerInterval);
+            // Time's up, handle it as needed
+            onTimeUp();
+        }
+    }, 1000);
 
     // Clear timer when modal is hidden
     $('#questionModal').on('hidden.bs.modal', function () {
