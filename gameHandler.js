@@ -1018,7 +1018,7 @@ document.addEventListener("touchstart", function (e) {
 
 document.addEventListener("touchmove", function (e) {
     e.preventDefault();
-    if (touchStartX !== undefined && raceCarStartX !== undefined &&road.width<e.touches[0].clientX )  {
+    if (touchStartX !== undefined && raceCarStartX !== undefined )  {
         const touchX = e.touches[0].clientX;
         const deltaX = touchX - touchStartX;
         player.x = raceCarStartX + deltaX;
