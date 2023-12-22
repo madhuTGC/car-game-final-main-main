@@ -66,35 +66,9 @@
              box-shadow: 0 5px 5px #777;
          }
 
-         .startScreen {
-            overflow: hidden;
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            background: url('assets/images/start.png') center center no-repeat;
-            background-size: cover;
-            /* left: 50%; */
-            /* top: 50%; */
-            transform: translate(-50%, -50%);
-            color: rgb(223, 215, 215);
-            z-index: 1;
-            text-align: center;
-            border: 2px solid #29b9b9; /* Darker blue border */
-            padding: 30px;
-            margin: auto;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Box shadow for depth effect */
-            font-size: 24px;
-            line-height: 36px;
-            cursor: pointer;
-        }
+
         
-        .startScreen:hover {
-            background-color: #141413; /* Darker blue on hover */
-        }
         
-        .startScreen p {
-            margin-bottom: 20px;
-        }
         
         
         
@@ -247,7 +221,10 @@
     border: 2px solid black;
     
 
+    
 }
+
+
 
 .radio-container label:hover {
     background-color: #a2a9af;
@@ -296,21 +273,16 @@ input{
         
         .startScreen {
             position: absolute;
-            background-color: #181b18;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            color: rgb(223, 215, 215);
             z-index: 1;
-            text-align: center;
-            border: 2px solid #29b9b9;
-            padding: 30px;
-            margin: auto;
-            cursor: pointer;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            font-size: 24px;
-            line-height: 36px;
+
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            background: url('assets/images/start.png') center center no-repeat;
+            background-size: cover;
         }
         
         
@@ -424,6 +396,8 @@ input{
         }
         
        
+
+        
         
        
 
@@ -505,7 +479,7 @@ input{
     
 
     .radio-container label {
-        font-size: 1em;
+        font-size: 18px;
         padding: 8px;
     }
 
@@ -539,6 +513,10 @@ input{
     input{
         margin-top: 2%;
         padding-top: 2%;
+    }
+
+    .radio-button{
+        margin-top: 2%;
     }
 }
 
