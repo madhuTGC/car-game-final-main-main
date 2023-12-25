@@ -318,6 +318,7 @@ input{
         
 
         .text-container {
+            gap: 2;
             text-align: center;
             position: absolute;
             top: 50%;
@@ -328,10 +329,23 @@ input{
         }
 
         .text {
+            font-size: 2em;
+            font-weight: bold;
+            color: rgb(188, 193, 188);
+        }
+
+        p{
+            font-size: 1.5em;
+            font-weight: bold;
+
+        }
+
+        ul{
             font-size: 1.5em;
             font-weight: bold;
         }
-
+        
+        
         #Instruction {
             width: 50%;
             height: 50%;
@@ -343,19 +357,14 @@ input{
             justify-content: center;
             align-items: center;
             border-radius: 20%;
-            background-color: #1b1e20; /* Initial background color */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Initial box shadow */
+            background-color: #1b1e20;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        #Instruction.animate {
-            background-color: #e74c3c; /* Updated background color */
-            transform: scale(1.2); /* Updated transform property */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); /* Updated box shadow */
-        }
         
         
-       
+
 
 /* Updated mobile responsiveness for modal */
 /* Additional styling for mobile responsiveness */
@@ -466,6 +475,11 @@ input{
         z-index: 1;
     }
     
+    .startScreen {
+        width: 100%;
+        height: 100%;
+        background-position-x: 38%;
+    }
 
    
 }

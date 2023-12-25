@@ -610,11 +610,11 @@ const QuestionList=
 ]
 
 
-gameStart.src = "assets/audio/game_theme.mp3";
-gameOver.src = "assets/audio/gameOver_theme.mp3";
+// gameStart.src = "assets/audio/game_theme.mp3";
+// gameOver.src = "assets/audio/gameOver_theme.mp3";
 
 
-const levelSpeed = {easy: 15};
+const levelSpeed = {easy: 5};
 
 
 let keys = {
@@ -709,6 +709,14 @@ startButton.addEventListener('click', () => {
         gameArea.appendChild(enemyCar);
     }
 });
+
+
+// Assuming you have a reference to your #Instruction element
+const instructionElement = document.getElementById('Instruction');
+
+// Add the .animate class to trigger the animation
+instructionElement.classList.add('animate');
+
 
 
 // function randomColor(){
@@ -1018,14 +1026,18 @@ document.addEventListener("touchstart", function (e) {
 
 document.addEventListener("touchmove", function (e) {
     e.preventDefault();
-    if (touchStartX !== undefined && raceCarStartX !== undefined )  {
-        const touchX = e.touches[0].clientX;
+    if (touchStartX !== undefined && raceCarStartX !== undefined)  {
+      const touchX = e.touches[0].clientX;
+
+      if ((-23.7< raceCarStartX + (touchX-touchStartX)) && (316.5>raceCarStartX + (touchX-touchStartX))){
         const deltaX = touchX - touchStartX;
         player.x = raceCarStartX + deltaX;
+        console.log({player:player.x})
         console.log({touchStartX,deltaX,touchX,raceCarStartX})
 
         const road = gameArea.getBoundingClientRect();
         player.x = Math.min(Math.max(player.x, 0), road.width - carElement.offsetWidth);
+      }
     }
 });
 
@@ -1033,6 +1045,7 @@ document.addEventListener("touchend", function (e) {
     touchStartX = undefined;
     raceCarStartX = undefined;
 });
+
 
 
 
