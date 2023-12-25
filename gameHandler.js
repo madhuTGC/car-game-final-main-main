@@ -1029,7 +1029,7 @@ document.addEventListener("touchmove", function (e) {
     if (touchStartX !== undefined && raceCarStartX !== undefined)  {
       const touchX = e.touches[0].clientX;
 
-      if ((-23.7< raceCarStartX + (touchX-touchStartX)) && (299>raceCarStartX + (touchX-touchStartX))){
+      if ((-23.7< raceCarStartX + (touchX-touchStartX)) && (250>raceCarStartX + (touchX-touchStartX))){
         const deltaX = touchX - touchStartX;
         player.x = raceCarStartX + deltaX;
         console.log({player:player.x})
